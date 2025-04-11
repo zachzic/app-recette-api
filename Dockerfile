@@ -4,7 +4,8 @@ FROM python:3.9-alpine3.13
 LABEL maintainer="zachzic"
 # Ajoute une étiquette pour indiquer le mainteneur de l'image.
 
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONUNBUFFERED=1
+# Définit la variable d'environnement PYTHONUNBUFFERED à 1 pour désactiver le buffering de la sortie standard.
 # Configure Python pour ne pas mettre en tampon les sorties, utile pour le logging en temps réel.
 
 COPY ./requirements.txt /tmp/requirements.txt

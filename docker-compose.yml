@@ -1,4 +1,4 @@
-version: "3.9"  # Version de la spécification Docker Compose utilisée
+#version: "3.9"  # Version de la spécification Docker Compose utilisée
 
 services:
   app:  # Définition du service nommé "app"
@@ -9,6 +9,7 @@ services:
     ports:
       - "8000:8000"  # Mappe le port 8080 de l'hôte au port 8080 du conteneur
     volumes:
-      - .:/app/app  # Monte le répertoire courant de l'hôte dans le conteneur sous /app/app
+      #- .:/app/app  # Monte le répertoire courant de l'hôte dans le conteneur sous /app/app
+      - .:/app  # Monte le répertoire courant de l'hôte dans le conteneur sous /app
     command: >
       sh -c "python manage.py runserver 0.0.0:8000"  

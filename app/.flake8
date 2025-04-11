@@ -1,0 +1,7 @@
+[flake8]
+# Exclude the following directories and files from flake8 checks:
+exclude = 
+    migrations,  # Exclude migration files (Django-specific)
+    __pycache__,  # Exclude Python bytecode cache directories
+    manage.py,  # Exclude the main Django management script
+    settings.py  # Exclude the Django settings file
