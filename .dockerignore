@@ -16,6 +16,6 @@ app/*/*/__pycache__/    # Cache compilé Python dans les sous-sous-dossiers de `
 app/*/*/*/__pycache__/  # Cache compilé Python dans les sous-sous-sous-dossiers de `app`
 
 # Exclure les fichiers d'environnement et les environnements virtuels
-.env            # Fichier contenant les variables d'environnement sensibles
-.venv           # Répertoire d'environnement virtuel Python
+.env/           # Fichier contenant les variables d'environnement sensibles
+.venv/          # Répertoire d'environnement virtuel Python
 venv/           # Répertoire alternatif pour l'environnement virtuel Python

@@ -4,13 +4,13 @@ FROM python:3.9-alpine3.13
 LABEL maintainer="zachzic"
 # Ajoute une étiquette pour indiquer le mainteneur de l'image.
 
-ENV PYTHONUNBUFFERED=1
+ENV PYTHONUNBUFFERED 1
 # Configure Python pour ne pas mettre en tampon les sorties, utile pour le logging en temps réel.
 
 COPY ./requirements.txt /tmp/requirements.txt
 # Copie le fichier requirements.txt dans le dossier temporaire de l'image.
 
-COPY ./requirements.dev.txt /tmp/requirements-dev.txt
+COPY ./requirements.dev.txt /tmp/requirements.dev.txt
 # Copie le fichier requirements-dev.txt dans le dossier temporaire de l'image.
 
 COPY ./app /app
@@ -35,7 +35,7 @@ RUN python -m venv /py && \
         then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
     fi && \
     # Si l'argument DEV est vrai, installe également les dépendances de développement.
-    rm -rf /tmp/ &&\
+    rm -rf /tmp &&\
     # Supprime le dossier temporaire pour réduire la taille de l'image.
     adduser \
         --disabled-password \
