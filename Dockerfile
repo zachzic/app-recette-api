@@ -10,7 +10,7 @@ ENV PYTHONUNBUFFERED=1
 COPY ./requirements.txt /tmp/requirements.txt
 # Copie le fichier requirements.txt dans le dossier temporaire de l'image.
 
-COPY ./requirements-dev.txt /tmp/requirements-dev.txt
+COPY ./requirements.dev.txt /tmp/requirements-dev.txt
 # Copie le fichier requirements-dev.txt dans le dossier temporaire de l'image.
 
 COPY ./app /app
@@ -31,8 +31,8 @@ RUN python -m venv /py && \
     # Met à jour pip dans l'environnement virtuel.
     /py/bin/pip install -r /tmp/requirements.txt && \
     # Installe les dépendances listées dans requirements.txt dans l'environnement virtuel.
-    if [ "$DEV" = true ];  \
-        then /py/bin/pip install -r /tmp/requirements-dev.txt; \
+    if [ $DEV = "true" ]; \
+        then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
     fi && \
     # Si l'argument DEV est vrai, installe également les dépendances de développement.
     rm -rf /tmp/ &&\
