@@ -1,4 +1,5 @@
 [flake8]
+max-line-length = 100
 # Exclude the following directories and files from flake8 checks:
 exclude = 
     migrations,  # Exclude migration files (Django-specific)
