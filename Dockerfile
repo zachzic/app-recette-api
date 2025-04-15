@@ -30,6 +30,9 @@ RUN python -m venv /py && \
     # Crée un environnement virtuel Python dans le dossier /py.
     /py/bin/pip install --upgrade pip && \
     # Met à jour pip dans l'environnement virtuel.
+    apk add --update --no-cache postgresql-client && \
+    apk add --update --no-cache --virtual .tmp-build-deps \
+        build-base postgresql-dev musl-dev &&\ 
     /py/bin/pip install -r /tmp/requirements.txt && \
     # Installe les dépendances listées dans requirements.txt dans l'environnement virtuel.
     if [ $DEV = "true" ]; \
@@ -38,6 +41,7 @@ RUN python -m venv /py && \
     # Si l'argument DEV est vrai, installe également les dépendances de développement.
     rm -rf /tmp &&\
     # Supprime le dossier temporaire pour réduire la taille de l'image.
+    apk del .tmp-build-deps && \
     adduser \
         --disabled-password \
         --no-create-home \  
