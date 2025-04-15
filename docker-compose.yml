@@ -13,3 +13,23 @@ services:
       - .:/app  # Monte le répertoire courant de l'hôte dans le conteneur sous /app
     command: >
       sh -c "python manage.py runserver 0.0.0:8000"  
+    environment:
+      DB_HOST: db  # Définit la variable d'environnement DB_HOST pour le conteneur
+      DB_NAME: devdb  # Définit la variable d'environnement DB_NAME pour le conteneur
+      DB_USER: devuser  # Définit la variable d'environnement DB_USER pour le conteneur
+      DB_PASSWORD: changeme  # Définit la variable d'environnement DB_PASSWORD pour le conteneur
+
+    depends_on:
+      - db  # Indique que le service "app" dépend du service "db"
+
+  db:
+    image: postgres:13-alpine  
+    volumes:
+      - dev-db-data:/var/lib/postgresql/data  # Monte un volume nommé pour la persistance des données
+    environment:
+      - POSTGRES_DB=devdb
+      - POSTGRES_USER=devuser
+      - POSTGRES_PASSWORD=changeme
+
+volumes:
+  dev-db-data:
